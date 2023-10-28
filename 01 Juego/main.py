@@ -11,7 +11,7 @@ import Ascii_Art
 numero_jugadores = 0
 turno_jugador = 0
 
-mano_pl1  =["Medicina Multicolor"]
+mano_pl1  =[]
 mano_pl2  =[]
 mano_pl3  =[]
 mano_pl4  =[]
@@ -27,7 +27,7 @@ mesa_pl6  =[]
 
 mazo_descartes = []
 num_descartes  = 0
-reintento = 0
+#reintento = 0
 
 ganador = 0
 ganador_texto = 0
@@ -135,10 +135,8 @@ def run(num_pl):
                             print("Jugar Carta")
                             if Jugar_Carta(mano_pl1, mesa_pl1) == 1:
                                 Jugar_Carta(mano_pl1, mesa_pl1)
-                                reintento = 0
                                 break
                             else:
-                                reintento = 0
                                 break
                         if (sel == 2):
                             print("Jugador 1 pasa turno")
@@ -167,10 +165,8 @@ def run(num_pl):
                             print("Jugar Carta")
                             if Jugar_Carta(mano_pl2, mesa_pl2) == 1:
                                 Jugar_Carta(mano_pl2, mesa_pl2)
-                                reintento = 0
                                 break
                             else:
-                                reintento = 0
                                 break
                         if (sel == 2):
                             print("Jugador 2 pasa turno")
@@ -184,125 +180,17 @@ def run(num_pl):
             turno_jugador = 3
             print("Mano Jugador 3", mano_pl3)
 
-            while True:
-                sel = input("0:Descartar, 1:Jugar Carta, 2:Pasa Turno      ")
-                if sel.isnumeric():
-                    sel = int(sel)
-                    if 0 <= sel <= 2:
-                        if (sel == 0):
-                            print("Descartar")
-                            descartar(mano_pl3)
-                            robar(mano_pl3, num_descartes)
-                            num_descartes = 0
-                            break
-                        if (sel == 1):
-                            print("Jugar Carta")
-                            if Jugar_Carta(mano_pl3, mesa_pl3) == 1:
-                                Jugar_Carta(mano_pl3, mesa_pl3)
-                                reintento = 0
-                            else:
-                                reintento = 0
-                                break
-                        if (sel == 2):
-                            print("Jugador 3 pasa turno")
-                            break
-                    else:
-                        print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
-                else:
-                    print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
-
         if (i == 4):
             turno_jugador = 4
             print("Mano Jugador 4", mano_pl4)
-
-            while True:
-                sel = input("0:Descartar, 1:Jugar Carta, 2:Pasa Turno      ")
-                if sel.isnumeric():
-                    sel = int(sel)
-                    if 0 <= sel <= 2:
-                        if (sel == 0):
-                            print("Descartar")
-                            descartar(mano_pl4)
-                            robar(mano_pl4, num_descartes)
-                            num_descartes = 0
-                            break
-                        if (sel == 1):
-                            print("Jugar Carta")
-                            if Jugar_Carta(mano_pl4, mesa_pl4) == 1:
-                                Jugar_Carta(mano_pl4, mesa_pl4)
-                                reintento = 0
-                            else:
-                                reintento = 0
-                                break
-                        if (sel == 2):
-                            print("Jugador 4 pasa turno")
-                            break
-                    else:
-                        print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
-                else:
-                    print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
 
         if (i == 5):
             turno_jugador = 5
             print("Mano Jugador 5", mano_pl5)
 
-            while True:
-                sel = input("0:Descartar, 1:Jugar Carta, 2:Pasa Turno      ")
-                if sel.isnumeric():
-                    sel = int(sel)
-                    if 0 <= sel <= 2:
-                        if (sel == 0):
-                            print("Descartar")
-                            descartar(mano_pl5)
-                            robar(mano_pl5, num_descartes)
-                            num_descartes = 0
-                            break
-                        if (sel == 1):
-                            print("Jugar Carta")
-                            if Jugar_Carta(mano_pl5, mesa_pl5) == 1:
-                                Jugar_Carta(mano_pl5, mesa_pl5)
-                                reintento = 0
-                            else:
-                                reintento = 0
-                                break
-                        if (sel == 2):
-                            print("Jugador 5 pasa turno")
-                            break
-                    else:
-                        print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
-                else:
-                    print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
-
         if (i == 6):
             turno_jugador = 6
             print("Mano Jugador 6", mano_pl6)
-
-            while True:
-                sel = input("0:Descartar, 1:Jugar Carta, 2:Pasa Turno      ")
-                if sel.isnumeric():
-                    sel = int(sel)
-                    if 0 <= sel <= 2:
-                        if (sel == 0):
-                            print("Descartar")
-                            descartar(mano_pl6)
-                            robar(mano_pl6, num_descartes)
-                            num_descartes = 0
-                            break
-                        if (sel == 1):
-                            print("Jugar Carta")
-                            if Jugar_Carta(mano_pl6, mesa_pl6) == 1:
-                                Jugar_Carta(mano_pl6, mesa_pl6)
-                                reintento = 0
-                            else:
-                                reintento = 0
-                                break
-                        if (sel == 2):
-                            print("Jugador 6 pasa turno")
-                            break
-                    else:
-                        print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
-                else:
-                    print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
 
 def descartar(mano):
     global num_descartes
@@ -406,6 +294,7 @@ def Jugar_Carta(mano, mesa):
     n_org = 0
     n_med = 0
     estado_org = 0
+    i_next = 0
 
     if(sel == '0'):
         print("Ataque")
@@ -413,113 +302,49 @@ def Jugar_Carta(mano, mesa):
     if(sel == '1'):
         print("Defensa")
         if(Busca_Texto_Mano(mano,"Medicina")==1):
-            if (Busca_Texto_Mano(mesa, "Organo") == 1):
-                print(mano)
-                med = input("Selecciona la medicina a emplear, Escribe el número de carta (primera 0, segunda 1 ...):   ")
-                n_med = int(med)
-                med = mano[n_med]
-                if (Busca_Texto(med, "Medicina Multicolor") == 1):
-                    print(mesa)
-                    org = input("Selecciona el organo a curar, Escribe el número de carta (primera 0, segunda 1 ...):   ")
-                    n_org = int(org)
-                    org = mesa[n_org]
-                    if (Busca_Texto(org, "Organo") == 1):
-                            estado_org = Estado_Organo(org)
-
-                            if (estado_org == 0):  # Sano
-                                mesa[n_org] += "+"
-                                del mano[n_med]
-                                robar(mano, 1)
-
-                            if (estado_org == 1):  # Vacunado
-                                mesa[n_org] += "+"
-                                del mano[n_med]
-                                robar(mano, 1)
-
-                            if (estado_org == 2):  # Inmunizado
-                                reintento = 1
-                                print("Organo inmunizado, no puedes usar la medicina")
-                                return reintento
-
-                            if (estado_org == 3):  # Infectado
-                                nueva_cadena = mesa[n_org].replace("*", "")
-                                mesa[n_org] = nueva_cadena
-                                del mano[n_med]
-                                robar(mano, 1)
-                elif (Busca_Texto(med, "Medicina") == 1):
-                    print(mesa)
-                    org = input("Selecciona el organo a curar, Escribe el número de carta (primera 0, segunda 1 ...):   ")
-                    n_org = int(org)
-                    org = mesa[n_org]
-                    if (Busca_Texto(org, "Organo") == 1):
-                        if (Busca_Texto(org, "Multicolor") == 1):
-                            estado_org = Estado_Organo(org)
-
-                            if (estado_org == 0):  # Sano
-                                mesa[n_org] += "+"
-                                del mano[n_med]
-                                robar(mano, 1)
-
-                            if (estado_org == 1):  # Vacunado
-                                mesa[n_org] += "+"
-                                del mano[n_med]
-                                robar(mano, 1)
-
-                            if (estado_org == 2):  # Inmunizado
-                                reintento = 1
-                                print("Organo inmunizado, no puedes usar la medicina")
-                                return reintento
-
-                            if (estado_org == 3):  # Infectado
-                                nueva_cadena = mesa[n_org].replace("*", "")
-                                mesa[n_org] = nueva_cadena
-                                del mano[n_med]
-                                robar(mano, 1)
-                        else:
-                            if(Compara_Color(med, org)==1):
-                                print("medicina y organo igual color")
-                                estado_org = Estado_Organo(org)
-
-                                if(estado_org==0):  #Sano
-                                    mesa[n_org] += "+"
-                                    del mano[n_med]
-                                    robar(mano,1)
-
-                                if (estado_org==1): #Vacunado
-                                    mesa[n_org] += "+"
-                                    del mano[n_med]
-                                    robar(mano, 1)
-
-                                if (estado_org==2): #Inmunizado
-                                    reintento = 1
-                                    print("Organo inmunizado, no puedes usar la medicina")
-                                    return reintento
-
-                                if (estado_org==3): #Infectado
-                                    nueva_cadena = mesa[n_org].replace("*", "")
-                                    mesa[n_org] = nueva_cadena
-                                    del mano[n_med]
-                                    robar(mano, 1)
+            if(Busca_Texto_Mano(mesa, "Organo")):
+                if(i_next==0):
+                    while True:
+                        print(mano)
+                        med = input("Selecciona la medicina a emplear, Escribe el número de carta (primera 0, segunda 1 ...):   ")
+                        if med.isnumeric():
+                            med = int(med)
+                            if (Busca_Texto(mano[med], "Medicina") == 1):
+                                i_next = 1
+                                break
                             else:
-                                reintento = 1
-                                print("medicina y organo color distinto")
-                                return reintento
-                    else:
-                        reintento = 1
-                        print("La carta elejida no es un organo")
-                        return reintento
-                else:
-                    reintento = 1
-                    print("La carta elejida no es una medicina")
-                    return reintento
+                                print("No has seleccionado una medicina")
+                        else:
+                            print("Entrada no válida")
+                if(i_next==1):
+                    while True:
+                        print(mesa)
+                        org = input("Selecciona el organo a curar, Escribe el número de carta (primera 0, segunda 1 ...):   ")
+                        if org.isnumeric():
+                            org = int(org)
+                            if (Busca_Texto(mesa[org], "Organo") == 1):
+                                i_next = 2
+                                break
+                            else:
+                                print("No has seleccionado una organo")
+                        else:
+                            print("Entrada no válida")
+                if(i_next==2):
+                    print("good")
+
+
+
+
+
+
+
             else:
-                reintento = 1
-                print("No dispones de organos en juego")
-                return reintento
+                print("No dispones de organos en mesa")
+                return 1
         else:
-            reintento = 1
-            print("No dispones de medicinas en tu mano")
-            return reintento
+            print("No dispones medicinas")
+            return 1
+
 
     if(sel == '2'):
         print("Lanzar Organo")
