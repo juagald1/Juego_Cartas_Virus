@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-10-28T11:38:48.288Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="ooPhXhjARoMOmyn3XyCg" version="22.0.8" type="device">
+<mxfile host="app.diagrams.net" modified="2023-10-28T12:19:41.606Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36" etag="jV6DG5ap_sG9MmcFAe78" version="22.0.8" type="device">
   <diagram id="DTverVttlDTBrXVBLfVz" name="Página-1">
-    <mxGraphModel dx="2035" dy="1084" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1132" dy="1081" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -674,10 +674,10 @@
         <mxCell id="kO1tTzlL6511T0l_Ank2-189" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="569" y="632" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="kO1tTzlL6511T0l_Ank2-190" value="¿Organo Multicolor?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="kO1tTzlL6511T0l_Ank2-190" value="¿Organo Multicolor?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="328.5" y="823" width="144" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="kO1tTzlL6511T0l_Ank2-191" value="¿Medicina Multicolor?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="kO1tTzlL6511T0l_Ank2-191" value="¿Medicina Multicolor?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="333.5" y="919" width="134" height="80" as="geometry" />
         </mxCell>
         <mxCell id="kO1tTzlL6511T0l_Ank2-192" value="Color Organo =&lt;br&gt;Color Medicina" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">

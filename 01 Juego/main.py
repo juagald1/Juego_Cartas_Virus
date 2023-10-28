@@ -11,14 +11,14 @@ import Ascii_Art
 numero_jugadores = 0
 turno_jugador = 0
 
-mano_pl1  =[]
+mano_pl1  =["Medicina Azul"]
 mano_pl2  =[]
 mano_pl3  =[]
 mano_pl4  =[]
 mano_pl5  =[]
 mano_pl6  =[]
 
-mesa_pl1  =["Organo Multicolor"]
+mesa_pl1  =["Organo Azul"]
 mesa_pl2  =[]
 mesa_pl3  =[]
 mesa_pl4  =[]
@@ -309,11 +309,14 @@ def Jugar_Carta(mano, mesa):
                         med = input("Selecciona la medicina a emplear, Escribe el número de carta (primera 0, segunda 1 ...):   ")
                         if med.isnumeric():
                             med = int(med)
-                            if (Busca_Texto(mano[med], "Medicina") == 1):
-                                i_next = 1
-                                break
+                            if (med <= len(mano)):
+                                if (Busca_Texto(mano[med], "Medicina") == 1):
+                                    i_next = 1
+                                    break
+                                else:
+                                    print("No has seleccionado una medicina")
                             else:
-                                print("No has seleccionado una medicina")
+                                print("Entrada no válida")
                         else:
                             print("Entrada no válida")
                 if(i_next==1):
@@ -322,22 +325,76 @@ def Jugar_Carta(mano, mesa):
                         org = input("Selecciona el organo a curar, Escribe el número de carta (primera 0, segunda 1 ...):   ")
                         if org.isnumeric():
                             org = int(org)
-                            if (Busca_Texto(mesa[org], "Organo") == 1):
-                                i_next = 2
-                                break
+                            if (org <= len(mesa)):
+                                if (Busca_Texto(mesa[org], "Organo") == 1):
+                                    i_next = 2
+                                    break
+                                else:
+                                    print("No has seleccionado una organo")
                             else:
-                                print("No has seleccionado una organo")
+                                print("Entrada no válida")
                         else:
                             print("Entrada no válida")
                 if(i_next==2):
-                    print("good")
+                    #Organo multicolor
+                    if (Busca_Texto(mesa[org], "Organo Multicolor")):
+                        estado_org = Estado_Organo(mesa[org])
 
+                        if (estado_org == 0):  # Sano
+                            mesa[org] += "+"
+                            del mano[med]
+                            robar(mano, 1)
 
+                        if (estado_org == 1):  # Vacunado
+                            mesa[org] += "+"
+                            del mano[med]
+                            robar(mano, 1)
 
+                        if (estado_org == 2):  # Inmunizado
+                            print("Organo inmunizado, no puedes usar la medicina")
+                            return 1
+                    else:
+                        i_next = 3
+                if(i_next==3):
+                    #Medicina multicolor
+                    if (Busca_Texto(mano[med], "Medicina Multicolor")):
+                        estado_org = Estado_Organo(mesa[org])
 
+                        if (estado_org == 0):  # Sano
+                            mesa[org] += "+"
+                            del mano[med]
+                            robar(mano, 1)
 
+                        if (estado_org == 1):  # Vacunado
+                            mesa[org] += "+"
+                            del mano[med]
+                            robar(mano, 1)
 
+                        if (estado_org == 2):  # Inmunizado
+                            print("Organo inmunizado, no puedes usar la medicina")
+                            return 1
+                    else:
+                        i_next = 4
+                if(i_next==4):
+                    #Color Organo = Color Medicina
+                    if(Compara_Color(mesa[org], mano[med])==1):
+                        estado_org = Estado_Organo(mesa[org])
 
+                        if (estado_org == 0):  # Sano
+                            mesa[org] += "+"
+                            del mano[med]
+                            robar(mano, 1)
+
+                        if (estado_org == 1):  # Vacunado
+                            mesa[org] += "+"
+                            del mano[med]
+                            robar(mano, 1)
+
+                        if (estado_org == 2):  # Inmunizado
+                            print("Organo inmunizado, no puedes usar la medicina")
+                            return 1
+                    else:
+                        return 1
             else:
                 print("No dispones de organos en mesa")
                 return 1
