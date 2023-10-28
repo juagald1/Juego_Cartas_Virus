@@ -180,17 +180,121 @@ def run(num_pl):
             turno_jugador = 3
             print("Mano Jugador 3", mano_pl3)
 
+            while True:
+                sel = input("0:Descartar, 1:Jugar Carta, 2:Pasa Turno      ")
+                if sel.isnumeric():
+                    sel = int(sel)
+                    if 0 <= sel <= 2:
+                        if (sel == 0):
+                            print("Descartar")
+                            descartar(mano_pl3)
+                            robar(mano_pl3, num_descartes)
+                            num_descartes = 0
+                            break
+                        if (sel == 1):
+                            print("Jugar Carta")
+                            if Jugar_Carta(mano_pl3, mesa_pl3) == 1:
+                                Jugar_Carta(mano_pl3, mesa_pl3)
+                                break
+                            else:
+                                break
+                        if (sel == 2):
+                            print("Jugador 3 pasa turno")
+                            break
+                    else:
+                        print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
+                else:
+                    print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
+
         if (i == 4):
             turno_jugador = 4
             print("Mano Jugador 4", mano_pl4)
+
+            while True:
+                sel = input("0:Descartar, 1:Jugar Carta, 2:Pasa Turno      ")
+                if sel.isnumeric():
+                    sel = int(sel)
+                    if 0 <= sel <= 2:
+                        if (sel == 0):
+                            print("Descartar")
+                            descartar(mano_pl4)
+                            robar(mano_pl4, num_descartes)
+                            num_descartes = 0
+                            break
+                        if (sel == 1):
+                            print("Jugar Carta")
+                            if Jugar_Carta(mano_pl4, mesa_pl4) == 1:
+                                Jugar_Carta(mano_pl4, mesa_pl4)
+                                break
+                            else:
+                                break
+                        if (sel == 2):
+                            print("Jugador 4 pasa turno")
+                            break
+                    else:
+                        print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
+                else:
+                    print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
 
         if (i == 5):
             turno_jugador = 5
             print("Mano Jugador 5", mano_pl5)
 
+            while True:
+                sel = input("0:Descartar, 1:Jugar Carta, 2:Pasa Turno      ")
+                if sel.isnumeric():
+                    sel = int(sel)
+                    if 0 <= sel <= 2:
+                        if (sel == 0):
+                            print("Descartar")
+                            descartar(mano_pl5)
+                            robar(mano_pl5, num_descartes)
+                            num_descartes = 0
+                            break
+                        if (sel == 1):
+                            print("Jugar Carta")
+                            if Jugar_Carta(mano_pl5, mesa_pl5) == 1:
+                                Jugar_Carta(mano_pl5, mesa_pl5)
+                                break
+                            else:
+                                break
+                        if (sel == 2):
+                            print("Jugador 5 pasa turno")
+                            break
+                    else:
+                        print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
+                else:
+                    print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
+
         if (i == 6):
             turno_jugador = 6
             print("Mano Jugador 6", mano_pl6)
+
+            while True:
+                sel = input("0:Descartar, 1:Jugar Carta, 2:Pasa Turno      ")
+                if sel.isnumeric():
+                    sel = int(sel)
+                    if 0 <= sel <= 2:
+                        if (sel == 0):
+                            print("Descartar")
+                            descartar(mano_pl6)
+                            robar(mano_pl6, num_descartes)
+                            num_descartes = 0
+                            break
+                        if (sel == 1):
+                            print("Jugar Carta")
+                            if Jugar_Carta(mano_pl6, mesa_pl6) == 1:
+                                Jugar_Carta(mano_pl6, mesa_pl6)
+                                break
+                            else:
+                                break
+                        if (sel == 2):
+                            print("Jugador 6 pasa turno")
+                            break
+                    else:
+                        print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
+                else:
+                    print("El número debe estar en el rango de 0 a 2. inténtalo de nuevo.")
 
 def descartar(mano):
     global num_descartes
