@@ -520,9 +520,8 @@ def Jugar_Carta(mano, mesa):
             Comprueba_Ganador(mesa)
 
         else:
-            reintento = 1
             print("no tienes organos que jugar")
-            return reintento
+            return 1
 
     if(sel == '3'):
         print("Pasaste Turno")
