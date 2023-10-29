@@ -392,7 +392,7 @@ def imprime_tablero():
     print("**************************************")
 
 def Jugar_Carta(mano, mesa):
-    sel = input("0:Ataque, 1:Defensa, 2:Lanzar Organo, 3:Pasar Turno      ")
+    sel = input("0:Virus, 1:Medicina, 2:Tratamiento, 3:Lanzar Organo, 4:Pasar Turno      ")
     org = []
     med = []
     n_org = 0
@@ -401,10 +401,10 @@ def Jugar_Carta(mano, mesa):
     i_next = 0
 
     if(sel == '0'):
-        print("Ataque")
+        print("Virus")
 
     if(sel == '1'):
-        print("Defensa")
+        print("Medicina")
         if(Busca_Texto_Mano(mano,"Medicina")==1):
             if(Busca_Texto_Mano(mesa, "Organo")):
                 if(i_next==0):
@@ -506,8 +506,10 @@ def Jugar_Carta(mano, mesa):
             print("No dispones medicinas")
             return 1
 
-
     if(sel == '2'):
+        print("Tratamiento")
+
+    if(sel == '3'):
         print("Lanzar Organo")
         if(Busca_Texto_Mano(mano, "Organo")==1):
             while True:
@@ -530,7 +532,7 @@ def Jugar_Carta(mano, mesa):
             print("no tienes organos que jugar")
             return 1
 
-    if(sel == '3'):
+    if(sel == '4'):
         print("Pasaste Turno")
 
 
