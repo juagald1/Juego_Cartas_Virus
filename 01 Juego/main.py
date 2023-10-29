@@ -515,12 +515,13 @@ def Jugar_Carta(mano, mesa):
                 org = input("Selecciona el organo a lanzar, Escribe el número de carta (primera 0, segunda 1 ...):   ")
                 if org.isnumeric():
                     org = int(org)
-                    if (org <= len(mano)):
-                        mesa.append(mano[org])
-                        del mano[org]
-                        robar(mano, 1)
-                        Comprueba_Ganador(mesa)
-                        break
+                    if(Busca_Texto(mano[org], "Organo") == 1):
+                        if (org <= len(mano)):
+                            mesa.append(mano[org])
+                            del mano[org]
+                            robar(mano, 1)
+                            Comprueba_Ganador(mesa)
+                            break
                     else:
                         print("No has seleccioando un órgano")
                 else:
