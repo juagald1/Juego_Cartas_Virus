@@ -11,14 +11,14 @@ import Ascii_Art
 numero_jugadores = 0
 turno_jugador = 0
 
-mano_pl1  =["Medicina Azul"]
+mano_pl1  =[]
 mano_pl2  =[]
 mano_pl3  =[]
 mano_pl4  =[]
 mano_pl5  =[]
 mano_pl6  =[]
 
-mesa_pl1  =["Organo Azul"]
+mesa_pl1  =[]
 mesa_pl2  =[]
 mesa_pl3  =[]
 mesa_pl4  =[]
@@ -592,7 +592,7 @@ def Comprueba_Ganador(Mesa):
 
 
 
-#Ascii_Art.Intro()
+Ascii_Art.Intro()
 numero_jugadores()
 barajar(numero_jugadores)
 
