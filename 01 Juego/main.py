@@ -7,19 +7,22 @@ import Ascii_Art
 # Check en inputs que las entradas sean numericas en un rango
 # Desarrollar intro                                                         (OK)
 
+# Refactorizar entrada jugador empiece en 1 no en 0
+# Paquetizar is number en funcion, reducir lineas
+
 
 numero_jugadores = 0
 turno_jugador = 0
 
-mano_pl1  =[]
+mano_pl1  =["Virus Multicolor"]
 mano_pl2  =[]
 mano_pl3  =[]
 mano_pl4  =[]
 mano_pl5  =[]
 mano_pl6  =[]
 
-mesa_pl1  =[]
-mesa_pl2  =[]
+mesa_pl1  =["Transplante"]
+mesa_pl2  =["Organo Rojo"]
 mesa_pl3  =[]
 mesa_pl4  =[]
 mesa_pl5  =[]
@@ -395,6 +398,7 @@ def Jugar_Carta(mano, mesa):
     sel = input("0:Virus, 1:Medicina, 2:Tratamiento, 3:Lanzar Organo, 4:Pasar Turno      ")
     org = []
     med = []
+    vir = []
     n_org = 0
     n_med = 0
     estado_org = 0
@@ -402,6 +406,84 @@ def Jugar_Carta(mano, mesa):
 
     if(sel == '0'):
         print("Virus")
+        if(Busca_Texto_Mano(mano,"Virus")==1):
+            if(i_next==0):
+                while True:
+                    print(mano)
+                    vir = input("Selecciona el virus a emplear, Escribe el número de carta (primera 0, segunda 1 ...):   ")
+                    if vir.isnumeric():
+                        vir = int(vir)
+                        if (vir <= len(mano)):
+                            if (Busca_Texto(mano[vir], "Virus") == 1):
+                                if(Comprueba_Organos_Mesa() > 0):
+                                    i_next = 1
+                                    imprime_tablero()
+                                    break
+                                else:
+                                    sel = input("0:Virus, 1:Medicina, 2:Tratamiento, 3:Lanzar Organo, 4:Pasar Turno      ")
+                                    break
+                            else:
+                                print("No has seleccionado un virus")
+                        else:
+                            print("Entrada no válida")
+                    else:
+                        print("Entrada no válida")
+            if(i_next==1):
+                while True:
+                    vir = input("Selecciona jugador al que contagiar virus (primero 0, segundo 1 ...):   ")
+                    if vir.isnumeric():
+                        vir = int(vir)
+                        if (vir <= numero_jugadores):
+                            i_next = 2
+                            break
+                        else:
+                            print("Jugador no valido")
+                    else:
+                        print("Entrada no válida")
+            if (i_next == 2):
+                # chequea combinacion
+                while True:
+                    print("Selecciona organo a contagiar del jugador", vir + 1, "(primero 0, segundo 1 ...):")
+                    print(vir)
+                    org = input()
+                    if org.isnumeric():
+                        org = int(org)
+                        if(vir==0):
+                            if (Busca_Texto(mesa_pl1[org], "Organo") == 1):
+                                i_next = 3
+                                break
+                        if(vir==1):
+                            if (Busca_Texto(mesa_pl2[org], "Organo") == 1):
+                                i_next = 3
+                                break
+                        if(vir==2):
+                            if (Busca_Texto(mesa_pl3[org], "Organo") == 1):
+                                i_next = 3
+                                break
+                        if(vir==3):
+                            if (Busca_Texto(mesa_pl4[org], "Organo") == 1):
+                                i_next = 3
+                                break
+                        if(vir==4):
+                            if (Busca_Texto(mesa_pl5[org], "Organo") == 1):
+                                i_next = 3
+                                break
+                        if(vir==5):
+                            if (Busca_Texto(mesa_pl6[org], "Organo") == 1):
+                                i_next = 3
+                                break
+                        else:
+                            print("Selección no válida")
+                    else:
+                        print("Entrada no válida")
+            if (i_next == 3):
+                print('coco caca')
+
+
+
+        else:
+            print("No dispones virus")
+            return 1
 
     if(sel == '1'):
         print("Medicina")
@@ -593,14 +675,28 @@ def Comprueba_Ganador(Mesa):
         n_ganar = n_ganar + 1
 
     if n_ganar == 4:
-        # imprime_tablero()
-        # print(" ")
-        # print("FIN Juego!! ganador Jugador " + str(turno_jugador))
         ganador = 1
 
+def Comprueba_Organos_Mesa():
+    n_org = 0
+
+    if (Busca_Texto_Mano(mesa_pl1, "Organo") == 1):
+        n_org = 1
+    if (Busca_Texto_Mano(mesa_pl2, "Organo") == 1):
+        n_org = 2
+    if (Busca_Texto_Mano(mesa_pl3, "Organo") == 1):
+        n_org = 3
+    if (Busca_Texto_Mano(mesa_pl4, "Organo") == 1):
+        n_org = 4
+    if (Busca_Texto_Mano(mesa_pl5, "Organo") == 1):
+        n_org = 5
+    if (Busca_Texto_Mano(mesa_pl6, "Organo") == 1):
+        n_org = 6
+
+    return n_org
 
 
-Ascii_Art.Intro()
+#Ascii_Art.Intro()
 numero_jugadores()
 barajar(numero_jugadores)
 
