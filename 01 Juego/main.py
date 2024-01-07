@@ -9,6 +9,8 @@ import Ascii_Art
 
 # Refactorizar entrada jugador empiece en 1 no en 0
 # Paquetizar is number en funcion, reducir lineas
+# Organos u otros fuera de juego deben ir a mazo de descartes del mano
+# valorar meter reintentos en el ataque cuando no se selecciona organo por error
 
 
 numero_jugadores = 0
@@ -407,6 +409,7 @@ def Jugar_Carta(mano, mesa):
     if(sel == '0'):
         print("Virus")
         if(Busca_Texto_Mano(mano,"Virus")==1):
+            # Seleccion virus
             if(i_next==0):
                 while True:
                     print(mano)
@@ -428,6 +431,7 @@ def Jugar_Carta(mano, mesa):
                             print("Entrada no válida")
                     else:
                         print("Entrada no válida")
+            # Seleccion jugador a atacar
             if(i_next==1):
                 while True:
                     vir = input("Selecciona jugador al que contagiar virus (primero 0, segundo 1 ...):   ")
@@ -440,44 +444,205 @@ def Jugar_Carta(mano, mesa):
                             print("Jugador no valido")
                     else:
                         print("Entrada no válida")
+            # Seleccion organo a atacar
             if (i_next == 2):
-                # chequea combinacion
                 while True:
                     print("Selecciona organo a contagiar del jugador", vir + 1, "(primero 0, segundo 1 ...):")
-                    print(vir)
                     org = input()
                     if org.isnumeric():
                         org = int(org)
                         if(vir==0):
                             if (Busca_Texto(mesa_pl1[org], "Organo") == 1):
-                                i_next = 3
+                                if (Busca_Texto(mesa_pl1[org], "++") == 0):
+                                    i_next = 3
+                                    break
+                                else:
+                                    print("Organo protegido")
+                                    break
+                            else:
+                                print("No has seleccionado un órgano")
                                 break
                         if(vir==1):
                             if (Busca_Texto(mesa_pl2[org], "Organo") == 1):
-                                i_next = 3
+                                if (Busca_Texto(mesa_pl2[org], "++") == 0):
+                                    i_next = 3
+                                    break
+                                else:
+                                    print("Organo protegido")
+                                    break
+                            else:
+                                print("No has seleccionado un órgano")
                                 break
                         if(vir==2):
                             if (Busca_Texto(mesa_pl3[org], "Organo") == 1):
-                                i_next = 3
+                                if (Busca_Texto(mesa_pl3[org], "++") == 0):
+                                    i_next = 3
+                                    break
+                                else:
+                                    print("Organo protegido")
+                                    break
+                            else:
+                                print("No has seleccionado un órgano")
                                 break
                         if(vir==3):
                             if (Busca_Texto(mesa_pl4[org], "Organo") == 1):
-                                i_next = 3
+                                if (Busca_Texto(mesa_pl4[org], "++") == 0):
+                                    i_next = 3
+                                    break
+                                else:
+                                    print("Organo protegido")
+                                    break
+                            else:
+                                print("No has seleccionado un órgano")
                                 break
                         if(vir==4):
                             if (Busca_Texto(mesa_pl5[org], "Organo") == 1):
-                                i_next = 3
+                                if (Busca_Texto(mesa_pl5[org], "++") == 0):
+                                    i_next = 3
+                                    break
+                                else:
+                                    print("Organo protegido")
+                                    break
+                            else:
+                                print("No has seleccionado un órgano")
                                 break
                         if(vir==5):
                             if (Busca_Texto(mesa_pl6[org], "Organo") == 1):
-                                i_next = 3
-                                break
+                                if (Busca_Texto(mesa_pl6[org], "++") == 0):
+                                    i_next = 3
+                                    break
+                                else:
+                                    print("Organo protegido")
+                                    break
                         else:
-                            print("Selección no válida")
+                            print("No has seleccionado un órgano")
+                            break
                     else:
                         print("Entrada no válida")
+            # Evalua virus y organo
             if (i_next == 3):
-                print('coco caca')
+                if (Busca_Texto(mano[vir-1], "Multicolor") == 1):
+                    #Virus Multicolor
+                    if (vir==0):
+                        if (Busca_Texto(mesa_pl1[org], "*") == 0):
+                            if (Busca_Texto(mesa_pl1[org], "+") == 0):
+                                mesa_pl1[org] += "*"
+                                del mano[vir-1]
+                                robar(mano, 1)
+                                return 0
+                        if (Busca_Texto(mesa_pl1[org], "*") == 1):
+                            mesa_pl1[org] += "*"
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            del mesa_pl1[org]
+                            return 0
+                        if (Busca_Texto(mesa_pl1[org], "+") == 1):
+                            mesa_pl1[org] = mesa_pl2[org].replace('+','')
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            return 0
+                    if (vir==1):
+                        if (Busca_Texto(mesa_pl2[org], "*") == 0):
+                            if (Busca_Texto(mesa_pl2[org], "+") == 0):
+                                mesa_pl2[org] += "*"
+                                del mano[vir-1]
+                                robar(mano, 1)
+                                return 0
+                        if (Busca_Texto(mesa_pl2[org], "*") == 1):
+                            mesa_pl2[org] += "*"
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            del mesa_pl2[org]
+                            return 0
+                        if (Busca_Texto(mesa_pl2[org], "+") == 1):
+                            mesa_pl2[org] = mesa_pl2[org].replace('+','')
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            return 0
+                    if (vir==2):
+                        if (Busca_Texto(mesa_pl3[org], "*") == 0):
+                            if (Busca_Texto(mesa_pl3[org], "+") == 0):
+                                mesa_pl3[org] += "*"
+                                del mano[vir-1]
+                                robar(mano, 1)
+                                return 0
+                        if (Busca_Texto(mesa_pl3[org], "*") == 1):
+                            mesa_pl3[org] += "*"
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            del mesa_pl3[org]
+                            return 0
+                        if (Busca_Texto(mesa_pl3[org], "+") == 1):
+                            mesa_pl3[org] = mesa_pl3[org].replace('+','')
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            return 0
+                    if (vir==3):
+                        if (Busca_Texto(mesa_pl4[org], "*") == 0):
+                            if (Busca_Texto(mesa_pl4[org], "+") == 0):
+                                mesa_pl4[org] += "*"
+                                del mano[vir-1]
+                                robar(mano, 1)
+                                return 0
+                        if (Busca_Texto(mesa_pl4[org], "*") == 1):
+                            mesa_pl4[org] += "*"
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            del mesa_pl4[org]
+                            return 0
+                        if (Busca_Texto(mesa_pl4[org], "+") == 1):
+                            mesa_pl4[org] = mesa_pl4[org].replace('+','')
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            return 0
+                    if (vir==4):
+                        if (Busca_Texto(mesa_pl5[org], "*") == 0):
+                            if (Busca_Texto(mesa_pl5[org], "+") == 0):
+                                mesa_pl5[org] += "*"
+                                del mano[vir-1]
+                                robar(mano, 1)
+                                return 0
+                        if (Busca_Texto(mesa_pl5[org], "*") == 1):
+                            mesa_pl5[org] += "*"
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            del mesa_pl5[org]
+                            return 0
+                        if (Busca_Texto(mesa_pl5[org], "+") == 1):
+                            mesa_pl5[org] = mesa_pl5[org].replace('+','')
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            return 0
+                    if (vir==5):
+                        if (Busca_Texto(mesa_pl6[org], "*") == 0):
+                            if (Busca_Texto(mesa_pl6[org], "+") == 0):
+                                mesa_pl6[org] += "*"
+                                del mano[vir-1]
+                                robar(mano, 1)
+                                return 0
+                        if (Busca_Texto(mesa_pl6[org], "*") == 1):
+                            mesa_pl6[org] += "*"
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            del mesa_pl6[org]
+                            return 0
+                        if (Busca_Texto(mesa_pl6[org], "+") == 1):
+                            mesa_pl6[org] = mesa_pl6[org].replace('+','')
+                            del mano[vir - 1]
+                            robar(mano, 1)
+                            return 0
+                else:
+                    #Virus No Multicolor
+                    print("Virus no multicolor")
+
+
+
+
+
+
+
+
+
 
 
 
