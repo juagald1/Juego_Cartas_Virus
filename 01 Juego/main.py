@@ -10,21 +10,28 @@ import Ascii_Art
 # Refactorizar entrada jugador empiece en 1 no en 0
 # Paquetizar is number en funcion, reducir lineas
 # Organos u otros fuera de juego deben ir a mazo de descartes del mano
+# considerar fin de cartas
 # valorar meter reintentos en el ataque cuando no se selecciona organo por error
+# dejar tiempo leer prints antes de pasar turno
+
+#organo afectado no se elimina * con +                                      (OK)
+#virus color no afecta a organo mulitcolor
+#selecciona jugador a infectar evitar poner mas jugadores de los que hay    (OK)
+#no es posible autoatacarse un organo
 
 
 numero_jugadores = 0
 turno_jugador = 0
 
-mano_pl1  =["Virus Multicolor"]
+mano_pl1  =[]
 mano_pl2  =[]
 mano_pl3  =[]
 mano_pl4  =[]
 mano_pl5  =[]
 mano_pl6  =[]
 
-mesa_pl1  =["Transplante"]
-mesa_pl2  =["Organo Rojo"]
+mesa_pl1  =[]
+mesa_pl2  =[]
 mesa_pl3  =[]
 mesa_pl4  =[]
 mesa_pl5  =[]
@@ -442,6 +449,7 @@ def Jugar_Carta(mano, mesa):
                             break
                         else:
                             print("Jugador no valido")
+                            break
                     else:
                         print("Entrada no válida")
             # Seleccion organo a atacar
@@ -633,20 +641,240 @@ def Jugar_Carta(mano, mesa):
                             return 0
                 else:
                     #Virus No Multicolor
-                    print("ola")
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    if (vir==0):
+                        if (Compara_Color(mesa_pl1[org], mano[vir-1]) == 1):
+                            if (Busca_Texto(mesa_pl1[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl1[org], "+") == 0):
+                                    mesa_pl1[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl1[org], "*") == 1):
+                                mesa_pl1[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl1[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl1[org], "+") == 1):
+                                mesa_pl1[org] = mesa_pl2[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        if(Busca_Texto(mesa_pl1[vir-1], "Multicolor") == 1):
+                            if (Busca_Texto(mesa_pl1[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl1[org], "+") == 0):
+                                    mesa_pl1[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl1[org], "*") == 1):
+                                mesa_pl1[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl1[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl1[org], "+") == 1):
+                                mesa_pl1[org] = mesa_pl2[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        else:
+                            print("No es posible el ataque")
+                    if (vir==1):
+                        if (Compara_Color(mesa_pl2[org], mano[vir-1]) == 1):
+                            if (Busca_Texto(mesa_pl2[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl2[org], "+") == 0):
+                                    mesa_pl2[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl2[org], "*") == 1):
+                                mesa_pl2[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl2[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl2[org], "+") == 1):
+                                mesa_pl2[org] = mesa_pl2[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        if(Busca_Texto(mesa_pl2[vir-1], "Multicolor") == 1):
+                            if (Busca_Texto(mesa_pl2[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl2[org], "+") == 0):
+                                    mesa_pl2[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl2[org], "*") == 1):
+                                mesa_pl2[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl2[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl2[org], "+") == 1):
+                                mesa_pl2[org] = mesa_pl2[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        else:
+                            print("No es posible el ataque")
+                    if (vir==2):
+                        if (Compara_Color(mesa_pl3[org], mano[vir-1]) == 1):
+                            if (Busca_Texto(mesa_pl3[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl3[org], "+") == 0):
+                                    mesa_pl3[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl3[org], "*") == 1):
+                                mesa_pl3[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl3[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl3[org], "+") == 1):
+                                mesa_pl3[org] = mesa_pl3[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        if(Busca_Texto(mesa_pl3[vir-1], "Multicolor") == 1):
+                            if (Busca_Texto(mesa_pl3[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl3[org], "+") == 0):
+                                    mesa_pl3[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl3[org], "*") == 1):
+                                mesa_pl3[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl3[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl3[org], "+") == 1):
+                                mesa_pl3[org] = mesa_pl3[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        else:
+                            print("No es posible el ataque")
+                    if (vir==3):
+                        if (Compara_Color(mesa_pl4[org], mano[vir-1]) == 1):
+                            if (Busca_Texto(mesa_pl4[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl4[org], "+") == 0):
+                                    mesa_pl4[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl4[org], "*") == 1):
+                                mesa_pl4[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl4[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl4[org], "+") == 1):
+                                mesa_pl4[org] = mesa_pl4[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        if(Busca_Texto(mesa_pl4[vir-1], "Multicolor") == 1):
+                            if (Busca_Texto(mesa_pl4[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl4[org], "+") == 0):
+                                    mesa_pl4[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl4[org], "*") == 1):
+                                mesa_pl4[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl4[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl4[org], "+") == 1):
+                                mesa_pl4[org] = mesa_pl4[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        else:
+                            print("No es posible el ataque")
+                    if (vir == 4):
+                        if (Compara_Color(mesa_pl5[org], mano[vir - 1]) == 1):
+                            if (Busca_Texto(mesa_pl5[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl5[org], "+") == 0):
+                                    mesa_pl5[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl5[org], "*") == 1):
+                                mesa_pl5[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl5[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl5[org], "+") == 1):
+                                mesa_pl5[org] = mesa_pl5[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        if (Busca_Texto(mesa_pl5[vir - 1], "Multicolor") == 1):
+                            if (Busca_Texto(mesa_pl5[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl5[org], "+") == 0):
+                                    mesa_pl5[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl5[org], "*") == 1):
+                                mesa_pl5[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl5[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl5[org], "+") == 1):
+                                mesa_pl5[org] = mesa_pl5[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        else:
+                            print("No es posible el ataque")
+                    if (vir == 5):
+                        if (Compara_Color(mesa_pl6[org], mano[vir - 1]) == 1):
+                            if (Busca_Texto(mesa_pl6[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl6[org], "+") == 0):
+                                    mesa_pl6[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl6[org], "*") == 1):
+                                mesa_pl6[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl6[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl6[org], "+") == 1):
+                                mesa_pl6[org] = mesa_pl6[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        if (Busca_Texto(mesa_pl6[vir - 1], "Multicolor") == 1):
+                            if (Busca_Texto(mesa_pl6[org], "*") == 0):
+                                if (Busca_Texto(mesa_pl6[org], "+") == 0):
+                                    mesa_pl6[org] += "*"
+                                    del mano[vir - 1]
+                                    robar(mano, 1)
+                                    return 0
+                            if (Busca_Texto(mesa_pl6[org], "*") == 1):
+                                mesa_pl6[org] += "*"
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                del mesa_pl6[org]
+                                return 0
+                            if (Busca_Texto(mesa_pl6[org], "+") == 1):
+                                mesa_pl6[org] = mesa_pl6[org].replace('+', '')
+                                del mano[vir - 1]
+                                robar(mano, 1)
+                                return 0
+                        else:
+                            print("No es posible el ataque")
         else:
             print("No dispones virus")
             return 1
@@ -696,15 +924,17 @@ def Jugar_Carta(mano, mesa):
                             mesa[org] += "+"
                             del mano[med]
                             robar(mano, 1)
-
                         if (estado_org == 1):  # Vacunado
                             mesa[org] += "+"
                             del mano[med]
                             robar(mano, 1)
-
                         if (estado_org == 2):  # Inmunizado
                             print("Organo inmunizado, no puedes usar la medicina")
-                            return 1
+                            return 0
+                        if (estado_org == 3):  # Infectado
+                            mesa[org] = mesa[org].replace('*', '')
+                            del mano[med]
+                            robar(mano, 1)
                     else:
                         i_next = 3
                 if(i_next==3):
@@ -716,15 +946,17 @@ def Jugar_Carta(mano, mesa):
                             mesa[org] += "+"
                             del mano[med]
                             robar(mano, 1)
-
                         if (estado_org == 1):  # Vacunado
                             mesa[org] += "+"
                             del mano[med]
                             robar(mano, 1)
-
                         if (estado_org == 2):  # Inmunizado
                             print("Organo inmunizado, no puedes usar la medicina")
                             return 1
+                        if (estado_org == 3):  # Infectado
+                            mesa[org] = mesa[org].replace('*', '')
+                            del mano[med]
+                            robar(mano, 1)
                     else:
                         i_next = 4
                 if(i_next==4):
@@ -736,15 +968,17 @@ def Jugar_Carta(mano, mesa):
                             mesa[org] += "+"
                             del mano[med]
                             robar(mano, 1)
-
                         if (estado_org == 1):  # Vacunado
                             mesa[org] += "+"
                             del mano[med]
                             robar(mano, 1)
-
                         if (estado_org == 2):  # Inmunizado
                             print("Organo inmunizado, no puedes usar la medicina")
                             return 1
+                        if (estado_org == 3):  # Infectado
+                            mesa[org] = mesa[org].replace('*', '')
+                            del mano[med]
+                            robar(mano, 1)
                     else:
                         return 1
             else:
@@ -862,7 +1096,7 @@ def Comprueba_Organos_Mesa():
     return n_org
 
 
-#Ascii_Art.Intro()
+Ascii_Art.Intro()
 numero_jugadores()
 barajar(numero_jugadores)
 
@@ -874,5 +1108,5 @@ while ganador == 1:
         print(" ")
         imprime_tablero()
         print(" ")
-        print("FIN del juego!! ganador Jugador " + str(turno_jugador))
+        print("FIN del juego maulas!! ganador Jugador " + str(turno_jugador))
         ganador_texto = 1
