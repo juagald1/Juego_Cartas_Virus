@@ -68,12 +68,12 @@ def numero_jugadores():
     global numero_jugadores
 
     while True:
-        numero_jugadores = input("Introduce número de jugadores (de 1 a 6): ")
+        numero_jugadores = input("Introduce número de jugadores (de 2 a 6): ")
 
         if numero_jugadores.isdigit():
             numero_jugadores = int(numero_jugadores)
 
-            if 1 <= numero_jugadores <= 6:
+            if 2 <= numero_jugadores <= 6:
                 return numero_jugadores
 
         print("Número de jugadores no válido, inténtalo de nuevo.")
@@ -633,7 +633,8 @@ def Jugar_Carta(mano, mesa):
                             return 0
                 else:
                     #Virus No Multicolor
-                    print("Virus no multicolor")
+                    print("ola")
+
 
 
 
